@@ -14,4 +14,16 @@ const getOne = async (req, res) => {
   return res.status(200).json(oneProduct);
 };
 
-module.exports = { getAll, getOne };
+const create = async (req, res) => {
+  const product = req.body;
+  const { name } = product;
+  const result = await productsService.create(product);
+  if (name === undefined || name === null) {
+    return res.status(400).json({ message: '"name" is required' });
+  } if (name.length < 5) {
+    return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
+  }
+  return res.status(201).json(result);
+};
+
+module.exports = { getAll, getOne, create };

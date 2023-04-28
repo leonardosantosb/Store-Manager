@@ -9,4 +9,9 @@ const getOne = async (productsId) => {
   const oneProduct = await productsModel.getOne(productsId);
   return oneProduct;
 };
-module.exports = { getAll, getOne };
+
+const create = async (product) => {
+  const createdProduct = await productsModel.create(product);
+  return createdProduct;
+};
+module.exports = { getAll, getOne, create };
