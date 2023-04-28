@@ -1,6 +1,6 @@
 const express = require('express');
 const productsController = require('./controllers/productsController');
-// const { productsValidator } = require('./middlewares/productsValidator');s
+// const { productsValidator } = require('./middlewares/productsValidator');
 
 const app = express();
 app.use(express.json());
