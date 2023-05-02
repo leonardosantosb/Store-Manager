@@ -26,5 +26,15 @@ describe('Products Service Tests', () => {
       expect(resultOne).to.contain.keys('id','name')
 
     })
+    it('create with data', async () => {
+      sinon.stub(productsModel, 'create').resolves(getOneMock)
+
+      const resultCreate = await productsService.create();
+
+      expect(resultCreate).to.be.an('object');
+      expect(resultCreate.name).to.be.equal('Martelo de Thor');
+      expect(resultCreate.id).to.be.equal(1);
+
+    })
   })
 })

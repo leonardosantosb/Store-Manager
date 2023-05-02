@@ -1,14 +1,12 @@
-// const validate = require('./joyValidator');
+const createValidator = async (req, res, next) => {
+  const product = req.body;
 
-// const validateProducts = async (req, res, next) => {
-//   const product = req.body;
+  if (product.name === undefined || product.name === null) {
+    return res.status(400).json({ message: '"name" is required' });
+  } if (product.name.length < 5) {
+    return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
+  }
+  next();
+};
 
-//   const { error } = validate(product);
-
-//   if (error) {
-//     return res.status(400).json({ message: error.message });
-//   }
-//   next();
-// };
-
-// module.exports = validateProducts;
+module.exports = { createValidator };

@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const connection = require('../../../src/models/connection');
 const productsModel = require('../../../src/models/productsModel');
-const { getAllMock, getOneMock } = require('../../mock/productsMock');
+const { getAllMock, getOneMock, insertMock } = require('../../mock/productsMock');
 
 
 
@@ -22,10 +22,19 @@ describe('Products Model Tests', () => {
     it('GetOne with data', async () => {
       sinon.stub(connection, 'execute').resolves([[getOneMock]])
         
-      const resultOne = await productsModel.getOne();
+      const resultOne = await productsModel.getOne(2);
 
       expect(resultOne).to.be.an('object');
       expect(resultOne).to.contain.keys('id','name')
+
+    })
+    it('Create with data', async () => {
+      sinon.stub(connection, 'execute').resolves([{ insertMock }])
+        
+      const resultCreate = await productsModel.create(getOneMock);
+
+      expect(resultCreate).to.be.an('object');
+      expect(resultCreate).to.contain.keys('id', 'name')
 
     })
   })

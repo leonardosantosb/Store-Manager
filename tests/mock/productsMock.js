@@ -9,5 +9,7 @@ const getOneMock = {
   "name": "Martelo de Thor"
 }
 
+const InsertMock = 1
 
-module.exports = { getAllMock, getOneMock }
+
+module.exports = { getAllMock, getOneMock, InsertMock }

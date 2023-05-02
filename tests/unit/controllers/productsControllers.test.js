@@ -39,7 +39,7 @@ describe('Products Controller Tests', () => {
       it('GetOne with data', async () => {
       sinon.stub(productsService, 'getOne').resolves(undefined)
 
-        const req = { params: { productsId: 1 } };
+      const req = { params: { productsId: 1 } };
       const res = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
@@ -48,6 +48,39 @@ describe('Products Controller Tests', () => {
         expect(res.status).to.have.been.calledWith(404)
         expect(res.json).to.have.been.calledWith({ message: 'Product not found' })
 
+      })
+      it('create with data', async () => {
+      sinon.stub(productsService, 'create').resolves(getAllMock)
+
+      const req = { body: { name: 'teste' } };
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      await productsController.create(req, res);
+
+        expect(res.status).to.have.been.calledWith(201)
+      })
+    it('name is required', async () => {
+      sinon.stub(productsService, 'create').resolves(undefined)
+
+      const req = { body: {} };
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      await productsController.create(req, res);
+
+      expect(res.status).to.have.been.calledWith(400)
+    })
+    it('"name" length must be at least 5 characters long', async () => {
+      sinon.stub(productsService, 'create').resolves(getAllMock)
+
+      const req = { body: { name: 'test' } };
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      await productsController.create(req, res);
+
+      expect(res.status).to.have.been.calledWith(422)
     })
   })
 })
