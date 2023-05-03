@@ -22,4 +22,12 @@ const create = async (req, res) => {
   return res.status(201).json(result);
 };
 
-module.exports = { getAll, getOne, create };
+const putOne = async (req, res) => {
+  const { productsId } = req.params;
+  const { name } = req.body;
+  const putProduct = await productsService.putOne(name, productsId);
+
+  return res.status(200).json(putProduct);
+};
+
+module.exports = { getAll, getOne, create, putOne };

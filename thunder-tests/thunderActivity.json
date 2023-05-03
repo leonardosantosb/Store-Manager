@@ -45,5 +45,81 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "8f327473-1540-406f-b816-682df0075e43",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/products/1",
+    "url": "http://localhost:3001/products/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-05-03T01:20:30.041Z",
+    "modified": "2023-05-03T01:20:30.041Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7b0a8881-3bcc-49ed-baf3-4c0200767e06",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/products/2",
+    "url": "http://localhost:3001/products/3",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-05-03T01:48:24.113Z",
+    "modified": "2023-05-03T15:01:20.345Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Bat\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3295ef1a-8b44-4cca-9931-cbd132b5eef4",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/products/2",
+    "url": "http://localhost:3001/products/2",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-05-03T16:46:40.751Z",
+    "modified": "2023-05-03T16:46:40.751Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Bat\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d8d21cc2-1043-475c-917e-42e2d6020ebe",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/products/222",
+    "url": "http://localhost:3001/products/222",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-05-03T16:47:01.571Z",
+    "modified": "2023-05-03T16:47:01.571Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Bat\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
