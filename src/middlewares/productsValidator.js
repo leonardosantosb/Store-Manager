@@ -16,6 +16,7 @@ const editValidator = async (req, res, next) => {
   const { productsId } = req.params;
   const getAll = await productsModel.getAll();
   const validator = getAll.map(({ id }) => id);
+  const find = validator.find((id) => id === Number(productsId));
 
   if (name === undefined) {
     return res.status(400).json({ message: '"name" is required' });
@@ -23,10 +24,22 @@ const editValidator = async (req, res, next) => {
     if (name.length < 5) {
     return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
     }
-  if (productsId > validator.length) {
+  if (!find) {
     return res.status(404).json({ message: 'Product not found' });
   } 
   next();
 };
 
-module.exports = { createValidator, editValidator };
+const excludeValidator = async (req, res, next) => {
+  const { productsId } = req.params;
+  const getAll = await productsModel.getAll();
+  const validator = getAll.map(({ id }) => id);
+  const find = validator.find((id) => id === Number(productsId));
+
+  if (!find) {
+    return res.status(404).json({ message: 'Product not found' });
+  } 
+  next();
+};
+
+module.exports = { createValidator, editValidator, excludeValidator };

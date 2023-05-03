@@ -19,4 +19,9 @@ const putOne = async (productName, productsId) => {
   const editProduct = await productsModel.putOne(productName, productsId);
   return editProduct;
 };
-module.exports = { getAll, getOne, create, putOne };
+
+const exclude = async (productsId) => {
+  const deletedProduct = await productsModel.exclude(productsId);
+  return deletedProduct;
+};
+module.exports = { getAll, getOne, create, putOne, exclude };

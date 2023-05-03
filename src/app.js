@@ -1,5 +1,9 @@
 const express = require('express');
-const { createValidator, editValidator } = require('./middlewares/productsValidator');
+const {
+  createValidator,
+  editValidator,
+  excludeValidator,
+  } = require('./middlewares/productsValidator');
 const productsController = require('./controllers/productsController');
 const salesController = require('./controllers/salesController');
 
@@ -22,7 +26,9 @@ app.get('/sales', salesController.getAll);
 app.get('/sales/:id', salesController.getOne);
 
 app.put('/products/:productsId', editValidator, productsController.putOne);
+
+app.delete('/products/:productsId', excludeValidator, productsController.exclude);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
-// você deve usar o arquivo index.js para executar sua aplicação
+// você deve usar o arquivo index.js para executar sua aplicação 
 module.exports = app;

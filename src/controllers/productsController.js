@@ -30,4 +30,9 @@ const putOne = async (req, res) => {
   return res.status(200).json(putProduct);
 };
 
-module.exports = { getAll, getOne, create, putOne };
+const exclude = async (req, res) => {
+  const { productsId } = req.params;
+  await productsService.exclude(productsId);
+  return res.status(204).json();
+};
+module.exports = { getAll, getOne, create, putOne, exclude };

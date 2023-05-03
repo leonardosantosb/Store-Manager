@@ -27,4 +27,11 @@ const putOne = async (productName, productsId) => {
   return { id: productsId, name: productName };
 };
 
-module.exports = { getAll, getOne, create, putOne };
+const exclude = async (productsId) => {
+  await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = (?)', [productsId],
+  );
+  return true;
+};
+
+module.exports = { getAll, getOne, create, putOne, exclude };
