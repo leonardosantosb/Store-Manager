@@ -7,6 +7,7 @@ const getAll = async (req, res) => {
 
 const getOne = async (req, res) => {
   const { id } = req.params;
+  console.log('usar no teste', req.params);
   const oneSale = await salesService.getOne(id);
 
   if (oneSale === undefined || oneSale === null || oneSale.length === 0) {

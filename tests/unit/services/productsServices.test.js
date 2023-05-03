@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const productsModel = require('../../../src/models/productsModel');
 const productsService = require('../../../src/services/productsService');
-const { getAllMock, getOneMock } = require('../../mock/productsMock');
+const { getAllMock, getOneMock, getDeleteMock } = require('../../mock/productsMock');
 
 describe('Products Service Tests', () => {
   describe('Sucess case', () => {
@@ -34,6 +34,25 @@ describe('Products Service Tests', () => {
       expect(resultCreate).to.be.an('object');
       expect(resultCreate.name).to.be.equal('Martelo de Thor');
       expect(resultCreate.id).to.be.equal(1);
+
+    })
+    it('putOne with data', async () => {
+      sinon.stub(productsModel, 'putOne').resolves(getOneMock)
+
+      const resultEdit = await productsService.putOne();
+
+      expect(resultEdit).to.be.an('object');
+      expect(resultEdit.name).to.be.equal('Martelo de Thor');
+      expect(resultEdit.id).to.be.equal(1);
+
+    })
+    it('exclude with data', async () => {
+      sinon.stub(productsModel, 'exclude').resolves(getDeleteMock)
+
+      const resultEdit = await productsService.exclude();
+
+      expect(result).to.be.an('array');
+      expect(result).to.have.length(2);
 
     })
   })

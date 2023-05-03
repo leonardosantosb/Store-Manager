@@ -3,7 +3,12 @@ const sinon = require('sinon');
 
 const connection = require('../../../src/models/connection');
 const productsModel = require('../../../src/models/productsModel');
-const { getAllMock, getOneMock, insertMock } = require('../../mock/productsMock');
+const {
+  getAllMock,
+  getOneMock,
+  insertMock,
+  getDeleteMock,
+} = require('../../mock/productsMock');
 
 
 
@@ -35,6 +40,24 @@ describe('Products Model Tests', () => {
 
       expect(resultCreate).to.be.an('object');
       expect(resultCreate).to.contain.keys('id', 'name')
+
+    })
+    it('putOne with data', async () => {
+      sinon.stub(connection, 'execute').resolves()
+        
+      const resultEdit = await productsModel.putOne(getOneMock);
+
+      expect(resultEdit).to.be.an('object');
+      expect(resultEdit).to.contain.keys('id', 'name')
+
+    })
+    it('exclude with data', async () => {
+      sinon.stub(connection, 'execute').resolves()
+        
+      const resultExclude = await productsModel.exclude(getDeleteMock);
+
+      expect(resultExclude).to.be.an('array');
+      expect(resultExclude).to.have.length(2);
 
     })
   })

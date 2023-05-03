@@ -82,5 +82,32 @@ describe('Products Controller Tests', () => {
 
       expect(res.status).to.have.been.calledWith(422)
     })
+
+    it('PutOne with data', async () => {
+      sinon.stub(productsService, 'putOne').resolves(getOneMock)
+
+      const req = { params: { productsId: 1 }, body: { name: "Martelo de Thor"} };
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      await productsController.putOne(req, res);
+
+      expect(res.status).to.have.been.calledWith(200)
+      expect(res.json).to.have.been.calledWith(getOneMock)
+
+    })
+        it('exclude with data', async () => {
+      sinon.stub(productsService, 'exclude').resolves(getAllMock)
+
+      const req = { params: { productsId: 1 }};
+      const res = {};
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      await productsController.exclude(req, res);
+
+      expect(res.status).to.have.been.calledWith(200)
+      expect(res.json).to.have.been.calledWith(getAllMock)
+
+    })
   })
 })
