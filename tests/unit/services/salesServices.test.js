@@ -5,7 +5,7 @@ const salesModel = require('../../../src/models/salesModel');
 const salesService = require('../../../src/services/salesService');
 const { getAllMock, getOneMock } = require('../../mock/salesMock');
 
-describe('Products Service Tests', () => {
+describe('Sales Service Tests', () => {
   describe('Sucess case', () => {
     afterEach(() => sinon.restore())
     it('GetAll with data', async () => {
@@ -23,7 +23,7 @@ describe('Products Service Tests', () => {
       const resultOne = await salesService.getOne(1);
 
       expect(resultOne).to.be.an('array');
-      expect(result).to.have.length(2);
+      expect(resultOne).to.have.length(2);
 
     })
   })
