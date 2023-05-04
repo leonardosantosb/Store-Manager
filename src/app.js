@@ -2,6 +2,7 @@ const express = require('express');
 const {
   editValidator,
   excludeValidator,
+  createValidator,
   } = require('./middlewares/productsValidator');
 const productsController = require('./controllers/productsController');
 const salesController = require('./controllers/salesController');
@@ -18,7 +19,7 @@ app.get('/products', productsController.getAll);
 
 app.get('/products/:productsId', productsController.getOne);
 
-app.post('/products', productsController.create);
+app.post('/products', createValidator, productsController.create);
 
 app.get('/sales', salesController.getAll);
 

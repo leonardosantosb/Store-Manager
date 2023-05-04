@@ -1,15 +1,15 @@
 const productsModel = require('../models/productsModel');
 
-// const createValidator = async (req, res, next) => {
-//   const product = req.body;
+const createValidator = async (req, res, next) => {
+  const product = req.body;
 
-//   if (product.name === undefined || product.name === null) {
-//     return res.status(400).json({ message: '"name" is required' });
-//   } if (product.name.length < 5) {
-//     return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
-//   }
-//   next();
-// };
+  if (product.name === undefined || product.name === null) {
+    return res.status(400).json({ message: '"name" is required' });
+  } if (product.name.length < 5) {
+    return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
+  }
+  next();
+};
 
 const editValidator = async (req, res, next) => {
   const { name } = req.body;
@@ -42,4 +42,4 @@ const excludeValidator = async (req, res, next) => {
   next();
 };
 
-module.exports = { editValidator, excludeValidator };
+module.exports = { editValidator, excludeValidator, createValidator };

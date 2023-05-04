@@ -9,6 +9,11 @@ const getOneMock = {
   "name": "Martelo de Thor"
 }
 
+const mockErrado = {
+"id": 1,
+"name": "Mart"
+}
+
 const InsertMock = 1
 
 const getDeleteMock = [
@@ -20,4 +25,4 @@ const errorMock =
   { "message": "\"name\" is required" }
 
 
-module.exports = { getAllMock, getOneMock, InsertMock, getDeleteMock, errorMock }
+module.exports = { getAllMock, getOneMock, InsertMock, getDeleteMock, errorMock, mockErrado }
