@@ -21,12 +21,12 @@ describe('Sales Model Tests', () => {
 
     })
     it('GetOne with data', async () => {
-      sinon.stub(connection, 'execute').resolves([[getOneMock]])
+      sinon.stub(connection, 'execute').resolves([getOneMock])
         
       const resultOne = await salesModel.getOne(1);
 
       expect(resultOne).to.be.an('array');
-      expect(result).to.have.length(2);
+      expect(resultOne).to.have.length(2);
 
     })
   })

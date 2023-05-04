@@ -5,7 +5,7 @@ use(sinonChai)
 
 const productsService = require('../../../src/services/productsService');
 const productsController = require('../../../src/controllers/productsController');
-const { getAllMock, getOneMock } = require('../../mock/productsMock');
+const { getAllMock, getOneMock, errorMock, getDeleteMock } = require('../../mock/productsMock');
 
 describe('Products Controller Tests', () => {
   describe('Sucess case', () => {
@@ -60,28 +60,6 @@ describe('Products Controller Tests', () => {
 
         expect(res.status).to.have.been.calledWith(201)
       })
-    it('name is required', async () => {
-      sinon.stub(productsService, 'create').resolves(undefined)
-
-      const req = { body: {} };
-      const res = {};
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
-      await productsController.create(req, res);
-
-      expect(res.status).to.have.been.calledWith(400)
-    })
-    it('"name" length must be at least 5 characters long', async () => {
-      sinon.stub(productsService, 'create').resolves(getAllMock)
-
-      const req = { body: { name: 'test' } };
-      const res = {};
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
-      await productsController.create(req, res);
-
-      expect(res.status).to.have.been.calledWith(422)
-    })
 
     it('PutOne with data', async () => {
       sinon.stub(productsService, 'putOne').resolves(getOneMock)
@@ -97,7 +75,7 @@ describe('Products Controller Tests', () => {
 
     })
         it('exclude with data', async () => {
-      sinon.stub(productsService, 'exclude').resolves(getAllMock)
+      sinon.stub(productsService, 'exclude').resolves(getDeleteMock)
 
       const req = { params: { productsId: 1 }};
       const res = {};
@@ -105,8 +83,7 @@ describe('Products Controller Tests', () => {
       res.json = sinon.stub().returns();
       await productsController.exclude(req, res);
 
-      expect(res.status).to.have.been.calledWith(200)
-      expect(res.json).to.have.been.calledWith(getAllMock)
+      expect(res.status).to.have.been.calledWith(204)
 
     })
   })

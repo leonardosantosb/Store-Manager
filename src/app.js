@@ -1,6 +1,5 @@
 const express = require('express');
 const {
-  createValidator,
   editValidator,
   excludeValidator,
   } = require('./middlewares/productsValidator');
@@ -10,7 +9,7 @@ const salesController = require('./controllers/salesController');
 const app = express();
 app.use(express.json());
 
-// não remova esse endpoint, é para o avaliador funciona
+// não remova esse endpoint, é para o avaliador funcion
 app.get('/', (_request, response) => {
   response.send();
 });
@@ -19,7 +18,7 @@ app.get('/products', productsController.getAll);
 
 app.get('/products/:productsId', productsController.getOne);
 
-app.post('/products', createValidator, productsController.create);
+app.post('/products', productsController.create);
 
 app.get('/sales', salesController.getAll);
 
@@ -30,5 +29,5 @@ app.put('/products/:productsId', editValidator, productsController.putOne);
 app.delete('/products/:productsId', excludeValidator, productsController.exclude);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
-// você deve usar o arquivo index.js para executar sua aplicação
+// você deve usar o arquivo index.js para executar sua aplicação 
 module.exports = app;

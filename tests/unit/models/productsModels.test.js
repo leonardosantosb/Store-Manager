@@ -56,8 +56,7 @@ describe('Products Model Tests', () => {
         
       const resultExclude = await productsModel.exclude(getDeleteMock);
 
-      expect(resultExclude).to.be.an('array');
-      expect(resultExclude).to.have.length(2);
+      expect(resultExclude).to.equal(true);
 
     })
   })

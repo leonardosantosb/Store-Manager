@@ -36,12 +36,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-28T01:50:46.575Z",
-    "modified": "2023-04-28T19:11:20.231Z",
+    "modified": "2023-05-04T17:41:39.805Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \n}",
+      "raw": "{\n  \"name\": \"testee\" \n}",
       "form": []
     },
     "tests": []
@@ -51,16 +51,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products/1",
-    "url": "http://localhost:3001/products/1",
+    "url": "http://localhost:3001/products/999",
     "method": "PUT",
     "sortNum": 0,
     "created": "2023-05-03T01:20:30.041Z",
-    "modified": "2023-05-03T01:20:30.041Z",
+    "modified": "2023-05-04T01:28:42.596Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
+      "raw": "{\n  \"name\": \"Mart\"\n}",
       "form": []
     },
     "tests": []

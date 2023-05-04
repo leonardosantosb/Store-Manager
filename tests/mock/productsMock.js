@@ -16,4 +16,8 @@ const getDeleteMock = [
   { id: 3, name: 'Escudo do Capitão América' }
 ]
 
-module.exports = { getAllMock, getOneMock, InsertMock, getDeleteMock }
+const errorMock = 
+  { "message": "\"name\" is required" }
+
+
+module.exports = { getAllMock, getOneMock, InsertMock, getDeleteMock, errorMock }

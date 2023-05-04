@@ -12,7 +12,14 @@ const getOne = async (productsId) => {
 
 const create = async (product) => {
   const createdProduct = await productsModel.create(product);
-  return createdProduct;
+  console.log('creatlog', createdProduct);
+  console.log('creatprod', product);
+  if (createdProduct === undefined || createdProduct === null) {
+    return ({ type: 400, message: '"name" is required' });
+  } if (product.length < 5) {
+    return ({ type: 422, message: '"name" length must be at least 5 characters long' });
+  }
+  return ({ type: null, message: createdProduct });
 };
 
 const putOne = async (productName, productsId) => {
